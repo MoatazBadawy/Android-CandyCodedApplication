@@ -21,7 +21,6 @@ public class DetailActivity extends AppCompatActivity {
     public static final String SHARE_DESCRIPTION = "Look at this delicious candy from Candy Coded - ";
     public static final String HASHTAG_CANDYCODED = " #candycoded";
     String mCandyImageUrl = "";
-    String shareCandy = SHARE_DESCRIPTION + mCandyImageUrl + HASHTAG_CANDYCODED;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,8 +79,9 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void createShareIntent() {
-        Intent shareIntent = new Intent(Intent.ACTION_SENDTO);
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
+        String shareCandy = SHARE_DESCRIPTION + mCandyImageUrl + HASHTAG_CANDYCODED;
         shareIntent.putExtra(Intent.EXTRA_TEXT,shareCandy);
         startActivity(shareIntent);
     }
